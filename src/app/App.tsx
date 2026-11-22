@@ -125,7 +125,7 @@ export function App() {
         <div className={styles.columns}>
           <div className={styles.col}>
             <div className={styles.colHead}>
-              <span className={styles.step}>1</span>
+              <span className={styles.step}>01</span>
               <div>
                 <div className={styles.colTitle}>입주민 화면</div>
                 <div className={styles.colSub}>
@@ -161,7 +161,7 @@ export function App() {
 
           <div className={styles.col}>
             <div className={styles.colHead}>
-              <span className={styles.step}>2</span>
+              <span className={styles.step}>02</span>
               <div>
                 <div className={styles.colTitle}>조합·설계자 화면</div>
                 <div className={styles.colSub}>

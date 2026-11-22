@@ -26,10 +26,10 @@
 }
 
 .on {
-  background: var(--brand);
   border-color: var(--brand);
-  color: #fff;
-  font-weight: 700;
+  color: var(--brand);
+  font-weight: 500;
+  box-shadow: inset 0 0 0 1px var(--brand);
 }
 
 .dot {
@@ -89,7 +89,7 @@
 }
 
 .cat {
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .meta {
@@ -99,11 +99,11 @@
 .newTag {
   margin-left: auto;
   font-size: 10.5px;
-  font-weight: 800;
-  color: var(--accent);
-  background: var(--accent-soft);
-  padding: 1px 6px;
-  border-radius: 4px;
+  font-weight: 500;
+  color: var(--brand);
+  border: 1px solid var(--brand);
+  padding: 0 6px;
+  border-radius: var(--radius-sm);
 }
 
 .text {

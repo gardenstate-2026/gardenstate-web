@@ -1,13 +1,14 @@
-/* my HILLS 앱 화면 구성(밑줄 탭, 회색 카드, 하단 바)에 보태니컬 모던 컬러를 적용한 스타일 */
+/* my HILLS 앱 화면 재현: 실제 앱 컬러(버건디 #971934) 유지, 사이트 컬러와 분리 */
 .phone {
-  --hills: #1a4331;
-  --hills-dark: #12301f;
-  --hills-soft: #e6efea;
-  --hills-card: #f5f4f2;
-  --hills-ink: #1f2421;
-  --hills-gray: #7d837f;
-  --hills-line: #e2dfda;
+  --hills: #971934;
+  --hills-dark: #7a1229;
+  --hills-soft: #f7e9ec;
+  --hills-card: #f0f0f0;
+  --hills-ink: #222222;
+  --hills-gray: #8a8a8a;
+  --hills-line: #e4e4e4;
 
+  font-family: var(--app-sans);
   width: 100%;
   max-width: 340px;
   margin: 0 auto;

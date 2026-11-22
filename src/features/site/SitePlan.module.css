@@ -31,7 +31,7 @@
 .facilityLabel,
 .buildingLabel {
   text-anchor: middle;
-  font-weight: 600;
+  font-weight: 500;
   pointer-events: none;
 }
 

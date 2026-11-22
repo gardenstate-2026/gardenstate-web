@@ -30,7 +30,7 @@ const LOCKED_MESSAGE =
 
 /**
  * my HILLS 민원 접수에 위치·유형 태깅을 추가한 제안 화면.
- * 실제 my HILLS 앱의 화면 구성(상단 밑줄 탭, 회색 카드, 하단 바)을 참고하고 보태니컬 모던 컬러를 입힌 콘셉트 목업이다.
+ * 실제 my HILLS 앱의 화면 구성(상단 밑줄 탭, 회색 카드, 버건디 하단 바)과 컬러를 그대로 재현한 콘셉트 목업이다.
  */
 export function ComplaintPhone({
   myComplaints,

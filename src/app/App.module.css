@@ -1,4 +1,4 @@
-/* 건축 그리드 스타일: 직선, 1px 웜그레이 구분선, 최소 라운드 */
+/* 현대건설 홈페이지 톤: 얇은 큰 제목, 1px 회색 선, 직각 모서리, 채운 박스 최소화 */
 .wrap {
   max-width: 1200px;
   margin: 0 auto;
@@ -20,8 +20,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-weight: 800;
-  font-size: 17px;
+  font-weight: 500;
+  font-size: 18px;
   letter-spacing: -0.3px;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .hero {
-  padding: 56px 0 44px;
+  padding: 72px 0 56px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -50,29 +50,32 @@
   max-width: 720px;
 }
 
-/* 상단 카테고리 태그 */
+/* 상단 카테고리 태그: 채우지 않고 얇은 선 */
 .eyebrow {
   margin: 0;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--brand);
-  background: var(--accent-soft);
-  padding: 5px 10px;
+  border: 1px solid var(--brand);
+  padding: 5px 12px;
   border-radius: var(--radius-sm);
 }
 
 .title {
   margin: 0;
-  font-size: clamp(32px, 5vw, 48px);
-  line-height: 1.18;
-  letter-spacing: -1.2px;
+  font-size: clamp(34px, 5vw, 54px);
+  font-weight: 300;
+  line-height: 1.22;
+  letter-spacing: -1px;
+  color: var(--ink-2);
   text-wrap: balance;
 }
 
 .lead {
   margin: 0;
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.7;
   color: var(--ink-2);
 }
 
@@ -87,11 +90,11 @@
 /* Primary CTA: 딥 그린 솔리드 + 화이트 볼드 */
 .cta {
   font: inherit;
-  font-weight: 700;
+  font-weight: 500;
   background: var(--brand);
   color: #fff;
   border: 0;
-  padding: 13px 20px;
+  padding: 14px 24px;
   border-radius: var(--radius);
   cursor: pointer;
 }
@@ -109,7 +112,7 @@
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
-  padding: 24px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -127,8 +130,10 @@
 
 .h2 {
   margin: 0;
-  font-size: 22px;
-  letter-spacing: -0.4px;
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: -0.6px;
+  color: var(--ink-2);
 }
 
 .sub {
@@ -143,21 +148,21 @@
   flex-wrap: wrap;
 }
 
-/* Secondary CTA: 세이지 배경 + 딥 그린 텍스트 */
+/* Secondary CTA: 딥 그린 1px 외곽선 + 딥 그린 텍스트 */
 .tool {
   font: inherit;
   font-size: 13px;
-  font-weight: 600;
-  padding: 8px 12px;
+  font-weight: 500;
+  padding: 8px 14px;
   border-radius: var(--radius);
-  border: 1px solid transparent;
-  background: var(--accent-soft);
+  border: 1px solid var(--brand);
+  background: var(--surface);
   color: var(--brand);
   cursor: pointer;
 }
 
 .tool:hover {
-  border-color: var(--brand);
+  background: var(--accent-soft);
 }
 
 /* 보조 버튼 중 덜 중요한 것: 딥 그린 외곽선 */
@@ -194,21 +199,17 @@
 }
 
 .step {
-  width: 24px;
-  height: 24px;
-  border-radius: var(--radius-sm);
-  background: var(--ink-1);
-  color: var(--surface);
-  display: grid;
-  place-items: center;
-  font-weight: 800;
-  font-size: 12px;
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--brand);
   flex: none;
+  font-variant-numeric: tabular-nums;
 }
 
 .colTitle {
-  font-weight: 800;
-  font-size: 15px;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .colSub {
@@ -240,8 +241,8 @@
 
 /* 핵심 수치는 포인트 컬러 */
 .statValue {
-  font-size: 18px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: 500;
   color: var(--brand);
   font-variant-numeric: tabular-nums;
 }
@@ -307,8 +308,8 @@
 
 .flowList li::before {
   content: "0" counter(flow);
-  font-size: 12px;
-  font-weight: 800;
+  font-size: 22px;
+  font-weight: 300;
   color: var(--brand);
   font-variant-numeric: tabular-nums;
 }
@@ -316,6 +317,7 @@
 .flowList b {
   font-family: var(--mono);
   font-size: 14px;
+  font-weight: 500;
   color: var(--ink-1);
 }
 
@@ -365,8 +367,9 @@
   font-size: 9px;
 }
 
+/* 휴대폰 안 표시와 같은 my HILLS 버건디 */
 .legendOn {
-  color: var(--brand);
+  color: #971934;
 }
 
 .legendOff {
