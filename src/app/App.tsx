@@ -110,9 +110,13 @@ export function App() {
           </div>
           <div className={styles.tools}>
             <button type="button" className={styles.tool} onClick={loadSamples}>
-              예시 민원 30건 불러오기
+              입주민 민원 불러오기 (예시 30건)
             </button>
-            <button type="button" className={styles.tool} onClick={clearAll}>
+            <button
+              type="button"
+              className={`${styles.tool} ${styles.toolGhost}`}
+              onClick={clearAll}
+            >
               비우기
             </button>
           </div>

@@ -1,6 +1,6 @@
 .slot {
   position: relative;
-  border-radius: 14px;
+  border-radius: var(--radius-card);
   overflow: hidden;
   border: 1px solid var(--line);
   background: var(--plan-ground);
@@ -23,5 +23,5 @@
   background: var(--surface);
   border: 1px solid var(--line);
   padding: 4px 9px;
-  border-radius: 999px;
+  border-radius: var(--radius-sm);
 }

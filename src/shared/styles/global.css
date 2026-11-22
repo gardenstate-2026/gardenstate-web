@@ -1,48 +1,54 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 
 /*
- * 컬러: 현대건설 힐스테이트 시그니처 '버건디' 계열.
- * 공식 HEX가 공개돼 있지 않아 my HILLS 앱 화면에서 추출한 #971934를 기준으로 삼았다.
- * 배치도(조경)는 식물 초록을 유지해 브랜드색과 구분한다.
+ * 보태니컬 모던 컬러 시스템 (발표자료와 동일)
+ * - 배경 60%: 웜그레이 #F5F4F2 / 화이트 #FFFFFF
+ * - 텍스트·라인 30%: 녹빛 다크 차콜 #1F2421, 웜그레이 1px 구분선
+ * - 포인트 10%: 딥 포레스트 그린 #1A4331 + 소프트 세이지 #E6EFEA
+ * 레이아웃: 건축 그리드. 직선 위주, 라운드는 2~6px로 최소화.
  */
 :root {
-  --bg: #f7f5f4;
+  --bg: #f5f4f2;
   --surface: #ffffff;
-  --surface-2: #f2eeed;
-  --ink-1: #1f1a1b;
-  --ink-2: #4a4245;
-  --ink-3: #7a7174;
-  --line: #e7e1e1;
-  --line-strong: #c9bfc1;
+  --surface-2: #f5f4f2;
+  --ink-1: #1f2421;
+  --ink-2: #474e4a;
+  --ink-3: #757c78;
+  --line: #e2dfda;
+  --line-strong: #c8c4bd;
 
-  --brand: #971934;
-  --brand-dark: #7a1229;
-  --accent: #971934;
-  --accent-soft: #f7e9ec;
-  --danger: #d23c31;
-  --warn: #9a5a00;
-  --warn-soft: #fff1d6;
+  --brand: #1a4331;
+  --brand-dark: #12301f;
+  --accent: #1a4331;
+  --accent-soft: #e6efea;
+  --danger: #b3261e;
+  --warn: #8a5a00;
+  --warn-soft: #fbf1dc;
+
+  --radius-sm: 2px;
+  --radius: 4px;
+  --radius-card: 6px;
 
   --plan-ground: #e6efe3;
-  --plan-path: #e9e0cd;
-  --plan-building: #d6ddd9;
-  --plan-line: #a9b6af;
-  --plan-tree: #4e9a6c;
-  --heat: #e2463b;
+  --plan-path: #e8e2d6;
+  --plan-building: #dcd9d3;
+  --plan-line: #b5b0a8;
+  --plan-tree: #4e8a64;
+  --heat: #d6453a;
 
-  --fac-playground: #f4c542;
-  --fac-court: #e08a5b;
-  --fac-dogpark: #a98be6;
-  --fac-recycle: #9aa29e;
-  --fac-garden: #7cc495;
+  --fac-playground: #e9c05a;
+  --fac-court: #d98c62;
+  --fac-dogpark: #a691d6;
+  --fac-recycle: #a3a39c;
+  --fac-garden: #86bf98;
 
-  --cat-noise: #e2463b;
-  --cat-pet: #7a4fd6;
-  --cat-traffic: #2f6fde;
+  --cat-noise: #d6453a;
+  --cat-pet: #7556c4;
+  --cat-traffic: #2f64c9;
   --cat-smell: #8c6239;
-  --cat-light: #d49a00;
-  --cat-shade: #2f8f6b;
-  --cat-etc: #6b7a73;
+  --cat-light: #c98f00;
+  --cat-shade: #2f7d5c;
+  --cat-etc: #6f7672;
 
   --sans:
     "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo",

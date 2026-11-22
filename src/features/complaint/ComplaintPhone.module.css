@@ -1,12 +1,12 @@
-/* my HILLS 앱 화면 구성을 참고한 스타일 (와인색 포인트, 회색 카드, 밑줄 탭) */
+/* my HILLS 앱 화면 구성(밑줄 탭, 회색 카드, 하단 바)에 보태니컬 모던 컬러를 적용한 스타일 */
 .phone {
-  --hills: #971934;
-  --hills-dark: #7a1229;
-  --hills-soft: #f7e9ec;
-  --hills-card: #f0f0f0;
-  --hills-ink: #222222;
-  --hills-gray: #8a8a8a;
-  --hills-line: #e4e4e4;
+  --hills: #1a4331;
+  --hills-dark: #12301f;
+  --hills-soft: #e6efea;
+  --hills-card: #f5f4f2;
+  --hills-ink: #1f2421;
+  --hills-gray: #7d837f;
+  --hills-line: #e2dfda;
 
   width: 100%;
   max-width: 340px;
@@ -99,7 +99,7 @@
   font-weight: 700;
   color: #fff;
   background: var(--hills);
-  border-radius: 999px;
+  border-radius: 2px;
   min-width: 15px;
   height: 15px;
   display: inline-grid;
@@ -123,7 +123,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   background: var(--hills-card);
-  border-radius: 6px;
+  border-radius: 4px;
   padding: 3px;
   font-size: 11.5px;
   color: var(--hills-gray);
@@ -183,7 +183,7 @@
 
 .planCard {
   background: var(--hills-card);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 6px;
 }
 
@@ -222,7 +222,7 @@
   font-size: 13px;
   padding: 10px 12px;
   border: 1px solid var(--hills-line);
-  border-radius: 6px;
+  border-radius: 4px;
   resize: none;
   background: #fff;
   color: var(--hills-ink);
@@ -233,7 +233,7 @@
   font-size: 12px;
   padding: 10px;
   border: 1px solid var(--hills-line);
-  border-radius: 6px;
+  border-radius: 4px;
   background: #fff;
   color: var(--hills-gray);
   cursor: pointer;
@@ -265,7 +265,7 @@
   font-size: 14px;
   font-weight: 700;
   padding: 13px;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -324,7 +324,7 @@
   width: 40px;
   height: 40px;
   margin: 0 auto;
-  border-radius: 50%;
+  border-radius: 4px;
   border: 2px solid var(--hills);
   color: var(--hills);
   display: grid;
@@ -336,7 +336,7 @@
 .card {
   position: relative;
   background: var(--hills-card);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 12px 14px;
 }
 
@@ -410,7 +410,7 @@
 
 .historyItem {
   background: var(--hills-card);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 10px 12px;
   display: flex;
   align-items: center;
@@ -421,7 +421,7 @@
   flex: none;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
+  border-radius: 4px;
   background: #fff;
   color: var(--hills);
   font-weight: 800;
@@ -497,7 +497,7 @@
   position: relative;
 }
 
-/* 이용 가능한 탭: 와인색 점으로 표시 */
+/* 이용 가능한 탭: 포인트 컬러 점으로 표시 */
 .subTabs button:not(.locked)::after {
   content: "";
   width: 5px;
@@ -558,6 +558,6 @@
   line-height: 1.45;
   text-align: center;
   padding: 9px 12px;
-  border-radius: 8px;
+  border-radius: 4px;
   z-index: 2;
 }

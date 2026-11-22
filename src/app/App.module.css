@@ -1,3 +1,4 @@
+/* 건축 그리드 스타일: 직선, 1px 웜그레이 구분선, 최소 라운드 */
 .wrap {
   max-width: 1200px;
   margin: 0 auto;
@@ -11,6 +12,8 @@
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
 }
 
 .logo {
@@ -23,14 +26,14 @@
 }
 
 .mark {
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
   background: var(--brand);
   color: #fff;
   display: grid;
   place-items: center;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .topNote {
@@ -39,19 +42,23 @@
 }
 
 .hero {
-  padding: 56px 0 40px;
+  padding: 56px 0 44px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  align-items: flex-start;
+  gap: 16px;
   max-width: 720px;
 }
 
+/* 상단 카테고리 태그 */
 .eyebrow {
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0;
   color: var(--brand);
+  background: var(--accent-soft);
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
 }
 
 .title {
@@ -77,13 +84,20 @@
   margin-top: 6px;
 }
 
+/* Primary CTA: 딥 그린 솔리드 + 화이트 볼드 */
 .cta {
+  font: inherit;
+  font-weight: 700;
   background: var(--brand);
   color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-  padding: 12px 18px;
-  border-radius: 12px;
+  border: 0;
+  padding: 13px 20px;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.cta:hover {
+  background: var(--brand-dark);
 }
 
 .notice {
@@ -94,8 +108,8 @@
 .demo {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 22px;
+  border-radius: var(--radius-card);
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -107,6 +121,8 @@
   align-items: flex-end;
   gap: 12px;
   flex-wrap: wrap;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
 }
 
 .h2 {
@@ -127,24 +143,33 @@
   flex-wrap: wrap;
 }
 
+/* Secondary CTA: 세이지 배경 + 딥 그린 텍스트 */
 .tool {
   font: inherit;
   font-size: 13px;
-  padding: 7px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--ink-2);
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  background: var(--accent-soft);
+  color: var(--brand);
   cursor: pointer;
 }
 
 .tool:hover {
+  border-color: var(--brand);
+}
+
+/* 보조 버튼 중 덜 중요한 것: 딥 그린 외곽선 */
+.toolGhost {
+  background: var(--surface);
   border-color: var(--line-strong);
+  color: var(--ink-2);
 }
 
 .tool:focus-visible,
 .cta:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--brand);
   outline-offset: 2px;
 }
 
@@ -169,15 +194,15 @@
 }
 
 .step {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
   background: var(--ink-1);
   color: var(--surface);
   display: grid;
   place-items: center;
   font-weight: 800;
-  font-size: 13px;
+  font-size: 12px;
   flex: none;
 }
 
@@ -193,18 +218,19 @@
 
 .stats {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: stretch;
+  gap: 0;
   flex-wrap: wrap;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
 }
 
 .stat {
-  background: var(--surface-2);
-  border-radius: 10px;
-  padding: 7px 12px;
+  padding: 8px 14px;
   display: flex;
   align-items: baseline;
   gap: 8px;
+  border-right: 1px solid var(--line);
 }
 
 .statLabel {
@@ -212,9 +238,11 @@
   color: var(--ink-3);
 }
 
+/* 핵심 수치는 포인트 컬러 */
 .statValue {
   font-size: 18px;
   font-weight: 800;
+  color: var(--brand);
   font-variant-numeric: tabular-nums;
 }
 
@@ -225,6 +253,13 @@
   font-size: 13px;
   color: var(--ink-2);
   cursor: pointer;
+  padding: 0 14px;
+  border-right: 1px solid var(--line);
+  accent-color: var(--brand);
+}
+
+.stats .tool {
+  margin: 5px 6px 5px auto;
 }
 
 .client {
@@ -235,40 +270,47 @@
 }
 
 .flow {
-  margin-top: 28px;
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
+/* 건축 그리드: 칸 사이를 1px 선으로 나눈 한 줄 표 */
 .flowList {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
   counter-reset: flow;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  overflow: hidden;
 }
 
 .flowList li {
   counter-increment: flow;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 14px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 4px;
   font-size: 13.5px;
   color: var(--ink-2);
+  border-right: 1px solid var(--line);
+}
+
+.flowList li:last-child {
+  border-right: 0;
 }
 
 .flowList li::before {
-  content: counter(flow);
+  content: "0" counter(flow);
   font-size: 12px;
   font-weight: 800;
   color: var(--brand);
+  font-variant-numeric: tabular-nums;
 }
 
 .flowList b {
@@ -279,9 +321,56 @@
 
 .footer {
   margin-top: 36px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
   font-size: 12px;
   color: var(--ink-3);
   text-align: center;
+}
+
+.phoneWrap {
+  scroll-margin: 24px;
+  border-radius: 40px;
+  max-width: 340px;
+  width: 100%;
+  margin: 0 auto;
+  transition: box-shadow 0.3s;
+}
+
+.glow {
+  box-shadow:
+    0 0 0 4px var(--bg),
+    0 0 0 7px var(--brand);
+}
+
+.phoneLegend {
+  margin: 0;
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink-3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.legendItem {
+  white-space: nowrap;
+}
+
+.legendOn,
+.legendOff {
+  font-style: normal;
+  font-size: 9px;
+}
+
+.legendOn {
+  color: var(--brand);
+}
+
+.legendOff {
+  color: #c9c9c9;
 }
 
 @media (max-width: 1080px) {
@@ -298,6 +387,14 @@
   .flowList {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .flowList li:nth-child(2) {
+    border-right: 0;
+  }
+
+  .flowList li:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
 }
 
 @media (max-width: 480px) {
@@ -308,62 +405,13 @@
   .flowList {
     grid-template-columns: 1fr;
   }
-}
 
-.cta {
-  border: 0;
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-}
+  .flowList li {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
 
-.phoneWrap {
-  scroll-margin: 24px;
-}
-
-.phoneLegend {
-  margin: 0;
-  text-align: center;
-  font-size: 12px;
-  color: var(--ink-3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 4px 6px;
-}
-
-.legendOn {
-  color: var(--brand);
-  font-size: 9px;
-}
-
-.legendOff {
-  color: #c9c9c9;
-  font-size: 9px;
-  margin-left: 8px;
-}
-
-.phoneWrap {
-  border-radius: 40px;
-  max-width: 340px;
-  width: 100%;
-  margin: 0 auto;
-  transition: box-shadow 0.3s;
-}
-
-.glow {
-  box-shadow:
-    0 0 0 4px var(--bg),
-    0 0 0 8px var(--brand);
-}
-
-.legendItem {
-  white-space: nowrap;
-}
-
-.legendOn,
-.legendOff {
-  font-style: normal;
-  margin-left: 0;
+  .flowList li:last-child {
+    border-bottom: 0;
+  }
 }
