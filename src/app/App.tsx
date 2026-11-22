@@ -79,7 +79,7 @@ export function App() {
       </header>
 
       <section className={styles.hero}>
-        <p className={styles.eyebrow}>GARDEN STATE · PROTOTYPE</p>
+        <p className={styles.eyebrow}>민원 기반 AI 조경 시각화 도우미</p>
         <h1 className={styles.title}>
           주민의 민원으로
           <br />

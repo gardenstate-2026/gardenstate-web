@@ -1,18 +1,24 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 
+/*
+ * 컬러: 현대건설 힐스테이트 시그니처 '버건디' 계열.
+ * 공식 HEX가 공개돼 있지 않아 my HILLS 앱 화면에서 추출한 #971934를 기준으로 삼았다.
+ * 배치도(조경)는 식물 초록을 유지해 브랜드색과 구분한다.
+ */
 :root {
-  --bg: #f4f7f5;
+  --bg: #f7f5f4;
   --surface: #ffffff;
-  --surface-2: #eef3f0;
-  --ink-1: #17201c;
-  --ink-2: #3c4a44;
-  --ink-3: #6b7a73;
-  --line: #dde6e1;
-  --line-strong: #b9c7c0;
+  --surface-2: #f2eeed;
+  --ink-1: #1f1a1b;
+  --ink-2: #4a4245;
+  --ink-3: #7a7174;
+  --line: #e7e1e1;
+  --line-strong: #c9bfc1;
 
-  --brand: #1f5f4a;
-  --accent: #2f8f6b;
-  --accent-soft: #e3f2ea;
+  --brand: #971934;
+  --brand-dark: #7a1229;
+  --accent: #971934;
+  --accent-soft: #f7e9ec;
   --danger: #d23c31;
   --warn: #9a5a00;
   --warn-soft: #fff1d6;
