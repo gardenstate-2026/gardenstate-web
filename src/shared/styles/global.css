@@ -1,0 +1,75 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+:root {
+  --bg: #f4f7f5;
+  --surface: #ffffff;
+  --surface-2: #eef3f0;
+  --ink-1: #17201c;
+  --ink-2: #3c4a44;
+  --ink-3: #6b7a73;
+  --line: #dde6e1;
+  --line-strong: #b9c7c0;
+
+  --brand: #1f5f4a;
+  --accent: #2f8f6b;
+  --accent-soft: #e3f2ea;
+  --danger: #d23c31;
+  --warn: #9a5a00;
+  --warn-soft: #fff1d6;
+
+  --plan-ground: #e6efe3;
+  --plan-path: #e9e0cd;
+  --plan-building: #d6ddd9;
+  --plan-line: #a9b6af;
+  --plan-tree: #4e9a6c;
+  --heat: #e2463b;
+
+  --fac-playground: #f4c542;
+  --fac-court: #e08a5b;
+  --fac-dogpark: #a98be6;
+  --fac-recycle: #9aa29e;
+  --fac-garden: #7cc495;
+
+  --cat-noise: #e2463b;
+  --cat-pet: #7a4fd6;
+  --cat-traffic: #2f6fde;
+  --cat-smell: #8c6239;
+  --cat-light: #d49a00;
+  --cat-shade: #2f8f6b;
+  --cat-etc: #6b7a73;
+
+  --sans:
+    "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo",
+    "Malgun Gothic", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink-1);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
