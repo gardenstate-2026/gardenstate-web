@@ -1,0 +1,507 @@
+{
+  "version": 1,
+  "site": "gardenstate-sample",
+  "generatedAt": "2026-11-23T00:00:00.000Z",
+  "complaints": [
+    {
+      "id": "sample-01",
+      "createdAt": "2026-11-20T12:00:00.000Z",
+      "x": 42,
+      "z": 9,
+      "category": "noise",
+      "text": "104동 앞 농구장에서 밤 11시까지 공 튀기는 소리가 나요",
+      "hasPhoto": true,
+      "origin": "sample",
+      "analysis": {
+        "category": "noise",
+        "timeOfDay": "night",
+        "facilityId": "court",
+        "summary": "104동 앞 농구장에서 밤 11시까지 공…",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-02",
+      "createdAt": "2026-11-19T19:12:00.000Z",
+      "x": 38,
+      "z": 6,
+      "category": "noise",
+      "text": "농구장 소리가 104동 저층까지 너무 크게 들려요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "noise",
+        "timeOfDay": "night",
+        "facilityId": "court",
+        "summary": "농구장 소리가 104동 저층까지 너무 크…",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-03",
+      "createdAt": "2026-11-19T02:24:00.000Z",
+      "x": 47,
+      "z": -6,
+      "category": "noise",
+      "text": "저녁마다 농구장 함성 때문에 102동 창문을 못 열어요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "noise",
+        "timeOfDay": "evening",
+        "facilityId": "court",
+        "summary": "저녁마다 농구장 함성 때문에 102동 창…",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-04",
+      "createdAt": "2026-11-18T09:36:00.000Z",
+      "x": 45,
+      "z": -9,
+      "category": "light",
+      "text": "농구장 조명이 102동 창문으로 밤새 들어와요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "light",
+        "timeOfDay": "night",
+        "facilityId": "court",
+        "summary": "농구장 조명이 102동 창문으로 밤새 들…",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-05",
+      "createdAt": "2026-11-17T16:48:00.000Z",
+      "x": 40,
+      "z": -4,
+      "category": "light",
+      "text": "농구장 야간 조명 너무 밝아요",
+      "hasPhoto": true,
+      "origin": "sample",
+      "analysis": {
+        "category": "light",
+        "timeOfDay": "night",
+        "facilityId": "court",
+        "summary": "농구장 야간 조명 너무 밝아요",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-06",
+      "createdAt": "2026-11-17T00:00:00.000Z",
+      "x": 6,
+      "z": -1,
+      "category": "pet",
+      "text": "놀이터 옆 잔디에 강아지 배변이 많아요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "pet",
+        "timeOfDay": "dawn",
+        "facilityId": "playground",
+        "summary": "놀이터 옆 잔디에 강아지 배변이 많아요",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-07",
+      "createdAt": "2026-11-16T07:12:00.000Z",
+      "x": -6,
+      "z": 2,
+      "category": "pet",
+      "text": "놀이터 근처에서 목줄 없는 강아지가 뛰어다녀요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "pet",
+        "timeOfDay": "day",
+        "facilityId": "playground",
+        "summary": "놀이터 근처에서 목줄 없는 강아지가 뛰어…",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-08",
+      "createdAt": "2026-11-15T14:24:00.000Z",
+      "x": -38,
+      "z": 7,
+      "category": "pet",
+      "text": "반려견 놀이터 짖는 소리가 103동까지 들려요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "pet",
+        "timeOfDay": "evening",
+        "facilityId": "dogpark",
+        "summary": "반려견 놀이터 짖는 소리가 103동까지 …",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-09",
+      "createdAt": "2026-11-14T21:36:00.000Z",
+      "x": -46,
+      "z": -4,
+      "category": "noise",
+      "text": "새벽 산책 시간에 반려견 놀이터가 시끄러워요",
+      "hasPhoto": true,
+      "origin": "sample",
+      "analysis": {
+        "category": "noise",
+        "timeOfDay": "dawn",
+        "facilityId": "dogpark",
+        "summary": "새벽 산책 시간에 반려견 놀이터가 시끄러…",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-10",
+      "createdAt": "2026-11-14T04:48:00.000Z",
+      "x": -40,
+      "z": -6,
+      "category": "pet",
+      "text": "반려견 놀이터 주변 냄새가 101동 쪽으로 와요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "pet",
+        "timeOfDay": "day",
+        "facilityId": "dogpark",
+        "summary": "반려견 놀이터 주변 냄새가 101동 쪽으…",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-11",
+      "createdAt": "2026-11-13T12:00:00.000Z",
+      "x": -52,
+      "z": -14,
+      "category": "traffic",
+      "text": "서쪽 산책로에서 자전거가 너무 빨리 달려요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "traffic",
+        "timeOfDay": "day",
+        "summary": "서쪽 산책로에서 자전거가 너무 빨리 달려…",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-12",
+      "createdAt": "2026-11-12T19:12:00.000Z",
+      "x": -30,
+      "z": -14,
+      "category": "traffic",
+      "text": "산책로에서 자전거랑 유모차가 자주 부딪힐 뻔해요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "traffic",
+        "timeOfDay": "evening",
+        "summary": "산책로에서 자전거랑 유모차가 자주 부딪힐…",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-13",
+      "createdAt": "2026-11-12T02:24:00.000Z",
+      "x": 20,
+      "z": -14,
+      "category": "traffic",
+      "text": "북쪽 산책로가 좁아서 휠체어가 지나가기 힘들어요",
+      "hasPhoto": true,
+      "origin": "sample",
+      "analysis": {
+        "category": "traffic",
+        "timeOfDay": "day",
+        "summary": "북쪽 산책로가 좁아서 휠체어가 지나가기 …",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-14",
+      "createdAt": "2026-11-11T09:36:00.000Z",
+      "x": 56,
+      "z": 4,
+      "category": "traffic",
+      "text": "동쪽 산책로 계단 때문에 유모차로 못 다녀요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "traffic",
+        "timeOfDay": "day",
+        "summary": "동쪽 산책로 계단 때문에 유모차로 못 다…",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-15",
+      "createdAt": "2026-11-10T16:48:00.000Z",
+      "x": 0,
+      "z": -20,
+      "category": "traffic",
+      "text": "중앙 보행로에 킥보드가 많아 아이들이 위험해요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "traffic",
+        "timeOfDay": "day",
+        "summary": "중앙 보행로에 킥보드가 많아 아이들이 위…",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-16",
+      "createdAt": "2026-11-10T00:00:00.000Z",
+      "x": -56,
+      "z": 6,
+      "category": "traffic",
+      "text": "산책로에 반려견이랑 자전거가 섞여서 불편해요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "traffic",
+        "timeOfDay": "evening",
+        "summary": "산책로에 반려견이랑 자전거가 섞여서 불편…",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-17",
+      "createdAt": "2026-11-09T07:12:00.000Z",
+      "x": 2,
+      "z": 28,
+      "category": "smell",
+      "text": "새벽에 분리수거장 수거 소리랑 냄새 때문에 힘들어요",
+      "hasPhoto": true,
+      "origin": "sample",
+      "analysis": {
+        "category": "smell",
+        "timeOfDay": "dawn",
+        "facilityId": "recycle",
+        "summary": "새벽에 분리수거장 수거 소리랑 냄새 때문…",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-18",
+      "createdAt": "2026-11-08T14:24:00.000Z",
+      "x": -6,
+      "z": 32,
+      "category": "smell",
+      "text": "여름에 분리수거장 냄새가 103동까지 와요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "smell",
+        "timeOfDay": "day",
+        "facilityId": "recycle",
+        "summary": "여름에 분리수거장 냄새가 103동까지 와…",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-19",
+      "createdAt": "2026-11-07T21:36:00.000Z",
+      "x": 8,
+      "z": 33,
+      "category": "noise",
+      "text": "새벽 5시 수거 트럭 소리에 잠이 깨요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "noise",
+        "timeOfDay": "dawn",
+        "facilityId": "recycle",
+        "summary": "새벽 5시 수거 트럭 소리에 잠이 깨요",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-20",
+      "createdAt": "2026-11-07T04:48:00.000Z",
+      "x": -3,
+      "z": 27,
+      "category": "smell",
+      "text": "분리수거장 주변에 쓰레기가 넘쳐요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "smell",
+        "timeOfDay": "evening",
+        "facilityId": "recycle",
+        "summary": "분리수거장 주변에 쓰레기가 넘쳐요",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-21",
+      "createdAt": "2026-11-06T12:00:00.000Z",
+      "x": 3,
+      "z": -6,
+      "category": "noise",
+      "text": "놀이터 소리가 주말 오전부터 너무 커요",
+      "hasPhoto": true,
+      "origin": "sample",
+      "analysis": {
+        "category": "noise",
+        "timeOfDay": "day",
+        "facilityId": "playground",
+        "summary": "놀이터 소리가 주말 오전부터 너무 커요",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-22",
+      "createdAt": "2026-11-05T19:12:00.000Z",
+      "x": -8,
+      "z": -8,
+      "category": "noise",
+      "text": "저녁 늦게까지 놀이터가 시끄러워요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "noise",
+        "timeOfDay": "evening",
+        "facilityId": "playground",
+        "summary": "저녁 늦게까지 놀이터가 시끄러워요",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-23",
+      "createdAt": "2026-11-05T02:24:00.000Z",
+      "x": 10,
+      "z": -9,
+      "category": "shade",
+      "text": "놀이터에 그늘이 없어서 여름에 못 나가요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "shade",
+        "timeOfDay": "day",
+        "facilityId": "playground",
+        "summary": "놀이터에 그늘이 없어서 여름에 못 나가요",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-24",
+      "createdAt": "2026-11-04T09:36:00.000Z",
+      "x": -12,
+      "z": 15,
+      "category": "shade",
+      "text": "중앙 정원 벤치에 그늘이 없어요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "shade",
+        "timeOfDay": "day",
+        "facilityId": "garden",
+        "summary": "중앙 정원 벤치에 그늘이 없어요",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-25",
+      "createdAt": "2026-11-03T16:48:00.000Z",
+      "x": 12,
+      "z": 14,
+      "category": "shade",
+      "text": "정원 산책하다 쉴 곳이 부족해요",
+      "hasPhoto": true,
+      "origin": "sample",
+      "analysis": {
+        "category": "shade",
+        "timeOfDay": "day",
+        "facilityId": "garden",
+        "summary": "정원 산책하다 쉴 곳이 부족해요",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-26",
+      "createdAt": "2026-11-03T00:00:00.000Z",
+      "x": 24,
+      "z": 18,
+      "category": "light",
+      "text": "산책로 가로등이 어두워서 밤에 무서워요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "light",
+        "timeOfDay": "night",
+        "summary": "산책로 가로등이 어두워서 밤에 무서워요",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-27",
+      "createdAt": "2026-11-02T07:12:00.000Z",
+      "x": -24,
+      "z": 18,
+      "category": "light",
+      "text": "103동 앞 산책로 조명이 꺼져 있어요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "light",
+        "timeOfDay": "night",
+        "summary": "103동 앞 산책로 조명이 꺼져 있어요",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-28",
+      "createdAt": "2026-11-01T14:24:00.000Z",
+      "x": -20,
+      "z": -2,
+      "category": "etc",
+      "text": "101동 앞 나무 가지가 창문을 가려요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "etc",
+        "timeOfDay": "day",
+        "summary": "101동 앞 나무 가지가 창문을 가려요",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-29",
+      "createdAt": "2026-10-31T21:36:00.000Z",
+      "x": 28,
+      "z": 2,
+      "category": "etc",
+      "text": "104동 앞 화단에 벌레가 많아요",
+      "hasPhoto": true,
+      "origin": "sample",
+      "analysis": {
+        "category": "etc",
+        "timeOfDay": "day",
+        "summary": "104동 앞 화단에 벌레가 많아요",
+        "source": "mock"
+      }
+    },
+    {
+      "id": "sample-30",
+      "createdAt": "2026-10-31T04:48:00.000Z",
+      "x": 52,
+      "z": 14,
+      "category": "noise",
+      "text": "농구장 공 소리가 104동 고층까지 울려요",
+      "hasPhoto": false,
+      "origin": "sample",
+      "analysis": {
+        "category": "noise",
+        "timeOfDay": "night",
+        "facilityId": "court",
+        "summary": "농구장 공 소리가 104동 고층까지 울려…",
+        "source": "mock"
+      }
+    }
+  ]
+}

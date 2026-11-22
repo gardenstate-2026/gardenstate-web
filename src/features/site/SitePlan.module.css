@@ -1,0 +1,80 @@
+.plan {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  user-select: none;
+}
+
+.pickable {
+  cursor: crosshair;
+}
+
+.ground {
+  fill: var(--plan-ground);
+}
+
+.path {
+  fill: none;
+  stroke: var(--plan-path);
+  stroke-width: 3.2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.facility {
+  fill-opacity: 0.55;
+  stroke: var(--plan-line);
+  stroke-width: 0.3;
+}
+
+.facilityLabel,
+.buildingLabel {
+  text-anchor: middle;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.facilityLabel {
+  fill: var(--ink-2);
+}
+
+.building {
+  fill: var(--plan-building);
+  stroke: var(--plan-line);
+  stroke-width: 0.35;
+}
+
+.buildingLabel {
+  fill: var(--ink-2);
+}
+
+.tree {
+  fill: var(--plan-tree);
+  fill-opacity: 0.75;
+}
+
+.pin {
+  cursor: pointer;
+}
+
+.pinDot {
+  stroke: #fff;
+  stroke-width: 0.6;
+}
+
+.pinRing {
+  fill: none;
+  stroke: var(--ink-1);
+  stroke-width: 0.5;
+}
+
+.marker {
+  fill: var(--accent);
+  stroke: #fff;
+  stroke-width: 0.6;
+}
+
+.markerDot {
+  fill: #fff;
+}

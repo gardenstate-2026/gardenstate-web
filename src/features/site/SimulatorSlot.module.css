@@ -1,0 +1,27 @@
+.slot {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--plan-ground);
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border: 0;
+}
+
+.badge {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink-2);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 4px 9px;
+  border-radius: 999px;
+}
