@@ -8,7 +8,17 @@
 
 **[가든스테이트 웹 데모 체험하기 →](https://gardenstate-2026.github.io/gardenstate-web/)** · 설치 없이 브라우저에서 열 수 있다.
 
-현재 저장소는 **민원 접수부터 도면 위 표시까지의 흐름을 실행 가능한 코드로 구체화한 초기 단계**이다. 3D 시뮬레이터, AI 민원 해석, 설계안 비교·투표는 해커톤 기간에 연결한다.
+현재 데모에서 민원을 접수하고, 조합·설계자 화면의 2D·3D 단지 배치와 민원 히트맵에서 확인할 수 있다. 별도 예시 설계안 화면에서는 A/B/C 배치와 산책 동선, 소음 영향 범위를 비교할 수 있다.
+
+## Demo Screenshots
+
+| 입주민 민원 접수 | 조합·설계자 민원 히트맵 · 2D 보기 |
+| --- | --- |
+| <img src="docs/images/web-resident.webp" width="340" alt="위치를 선택하고 소음 민원을 작성하는 입주민 화면"> | <img src="docs/images/web-designer.webp" width="600" alt="2D 단지 배치와 예시 민원 목록을 보여주는 조합·설계자 화면"> |
+
+| 3D 단지 배치 | 3D 예시 설계안 · 야간 민원 히트맵 |
+| --- | --- |
+| <img src="docs/images/simulator-site.webp" width="480" alt="아파트 4개 동과 조경 시설을 보여주는 3D 단지 배치"> | <img src="docs/images/simulator-scenario.webp" width="480" alt="8개 동 예시 단지 C안의 야간 민원 히트맵"> |
 
 ## 핵심 기능
 
@@ -66,7 +76,7 @@ pnpm dev
 | 민원 해석 카드                          | 키워드 목업. `VITE_AI_API_URL`을 설정하면 AI 모듈로 요청하고, 실패하면 목업으로 대신함                              |
 | 배치도 위 민원 핀·히트맵·유형 필터      | 구현. 2D 배치도 기준                                                                                                |
 | 예시 민원 30건, JSON 내보내기           | 구현. [`public/data/complaints.sample.json`](public/data/complaints.sample.json) 제공                               |
-| 3D 시뮬레이터 연결                      | 연결부 구현. `VITE_SIMULATOR_URL`을 설정하면 iframe으로 띄우고 postMessage로 민원 전달. 시뮬레이터 본체는 별도 작업 |
+| 3D 시뮬레이터 연결                      | 내장 3D에서 민원 핀, 히트맵, 선택 상태를 연동한다. 외부 시뮬레이터 주소는 `VITE_SIMULATOR_URL`로 설정한다. |
 | 스케치업 모델 반영                      | 미연동. 좌표계만 맞춰 둠                                                                                            |
 | 산책 동선 최적화, 소음 사정거리         | 미구현. 3D 시뮬레이터 쪽 레이어로 구현 예정                                                                         |
 | A/B/C안 비교·투표                       | 미구현. `features/proposal` 자리만 있음                                                                             |
