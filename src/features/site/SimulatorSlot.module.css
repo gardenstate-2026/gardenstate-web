@@ -27,51 +27,21 @@
   border-radius: var(--radius-sm);
 }
 
-.scenarioButton {
-  margin-bottom: 8px;
-  padding: 6px 10px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  color: var(--ink-2);
-  font: inherit;
-  cursor: pointer;
+.scenario {
+  margin-top: 20px;
 }
 
-.scenarioDialog {
-  box-sizing: border-box;
-  width: min(1440px, calc(100vw - 24px));
-  max-width: none;
-  padding: 0;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  background: var(--surface);
-}
-
-.scenarioDialog::backdrop {
-  background: rgb(20 32 27 / 52%);
-}
-
-.scenarioHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 6px 12px;
-}
-
-.scenarioHeader .scenarioButton {
-  margin: 0;
+.scenarioTitle {
+  margin: 0 0 8px;
+  font-size: 16px;
 }
 
 .scenarioFrame {
+  box-sizing: border-box;
   display: block;
   width: 100%;
-  height: min(850px, calc(100dvh - 84px));
-  border: 0;
-}
-
-.switchView {
-  font-family: inherit;
-  cursor: pointer;
+  height: clamp(680px, 85vh, 850px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--plan-ground);
 }
