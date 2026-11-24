@@ -28,8 +28,6 @@ export function SimulatorSlot({
   onSelect,
 }: SimulatorSlotProps) {
   const frameRef = useRef<HTMLIFrameElement>(null);
-  const scenarioDialog = useRef<HTMLDialogElement>(null);
-  const [showScenario, setShowScenario] = useState(false);
   const [planView, setPlanView] = useState(false);
   const [unavailable, setUnavailable] = useState(false);
   const origin = new URL(frameUrl, window.location.href).origin;
@@ -68,39 +66,6 @@ export function SimulatorSlot({
 
   return (
     <div>
-      <button
-        type="button"
-        className={styles.scenarioButton}
-        aria-haspopup="dialog"
-        onClick={() => {
-          scenarioDialog.current?.showModal();
-          setShowScenario(true);
-        }}
-      >
-        아파트 조경 3D 시뮬레이터
-      </button>
-      <dialog
-        ref={scenarioDialog}
-        className={styles.scenarioDialog}
-        aria-labelledby="scenario-title"
-        onClose={() => setShowScenario(false)}
-      >
-        <header className={styles.scenarioHeader}>
-          <strong id="scenario-title">아파트 조경 3D 시뮬레이터</strong>
-          <form method="dialog">
-            <button type="submit" className={styles.scenarioButton}>
-              닫기
-            </button>
-          </form>
-        </header>
-        {showScenario && (
-          <iframe
-            className={styles.scenarioFrame}
-            src={scenarioUrl}
-            title="8개 동 예시 단지 설계안 비교"
-          />
-        )}
-      </dialog>
       {!planView && !unavailable ? (
         <div className={styles.slot}>
           <iframe
@@ -125,9 +90,19 @@ export function SimulatorSlot({
             <div className={styles.badge} role="status">3D를 표시할 수 없어 2D 배치도를 표시합니다</div>
           ) : (
             <button type="button" className={styles.switchView} onClick={() => setPlanView(false)}>3D 단지 보기</button>
+          )}
+        </div>
       )}
-    </div>
-      )}
+      <section className={styles.scenario} aria-labelledby="scenario-title">
+        <h3 id="scenario-title" className={styles.scenarioTitle}>
+          아파트 조경 3D 시뮬레이터
+        </h3>
+        <iframe
+          className={styles.scenarioFrame}
+          src={scenarioUrl}
+          title="8개 동 예시 단지 설계안 비교"
+        />
+      </section>
     </div>
   );
 }
