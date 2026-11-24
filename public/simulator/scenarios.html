@@ -129,6 +129,8 @@ body.night .seg button.on{background:#2a3640;color:#fff}
   <button id="bNight">🌙 야간</button>
   <button id="bRot">자동 회전</button>
   <button id="bLbl" class="on">라벨</button>
+  <button id="bZoomIn" title="확대" aria-label="확대">+</button>
+  <button id="bZoomOut" title="축소" aria-label="축소">−</button>
   <button id="bHome">시점 초기화</button>
 </div>
 <div id="tip"></div>
@@ -139,6 +141,7 @@ body.night .seg button.on{background:#2a3640;color:#fff}
     const left = document.getElementById("left");
     const planDetails = document.createElement("details");
     planDetails.id = "planDetails";
+    planDetails.open = true;
     const planSummary = document.createElement("summary");
     planSummary.textContent = "설계안 설명 · 지표 · 투표";
     planDetails.append(planSummary);
@@ -240,8 +243,11 @@ camera.position.copy(HOME.pos);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.target.copy(HOME.tgt);
 controls.enableDamping = true;
-controls.maxPolarAngle = Math.PI * 0.48;
-controls.minDistance = 20; controls.maxDistance = 700;
+controls.maxPolarAngle = Math.PI * 0.36;
+controls.minDistance = 150;
+controls.maxDistance = 700;
+controls.enableZoom = true;
+controls.zoomSpeed = 0.65;
 controls.autoRotateSpeed = 0.5;
 
 const hemi = new THREE.HemisphereLight(0xeef6ff, 0x8f8a74, 1.15); scene.add(hemi);
@@ -806,7 +812,31 @@ document.querySelectorAll('#bar [data-l]').forEach(b => b.onclick = () => { st.l
 $('bNight').onclick = e => { st.night = !st.night; e.currentTarget.classList.toggle('on', st.night); document.body.classList.toggle('night', st.night); e.currentTarget.textContent = st.night ? '☀ 주간' : '🌙 야간'; refreshLayer(); };
 $('bRot').onclick = e => { controls.autoRotate = !controls.autoRotate; e.currentTarget.classList.toggle('on', controls.autoRotate); };
 $('bLbl').onclick = e => { st.labels = !st.labels; e.currentTarget.classList.toggle('on', st.labels); labelR.domElement.style.display = st.labels ? '' : 'none'; };
-$('bHome').onclick = () => { camera.position.copy(HOME.pos); controls.target.copy(HOME.tgt); };
+function zoomCamera(factor) {
+  const offset = camera.position.clone().sub(controls.target);
+  const distance = THREE.MathUtils.clamp(
+    offset.length() * factor,
+    controls.minDistance,
+    controls.maxDistance
+  );
+
+  camera.position.copy(controls.target).add(
+    offset.normalize().multiplyScalar(distance)
+  );
+
+  controls.update();
+}
+
+$('bZoomIn').onclick = () => zoomCamera(0.85);
+$('bZoomOut').onclick = () => zoomCamera(1.18);
+
+$('bHome').onclick = () => {
+  camera.position.copy(HOME.pos);
+  controls.target.copy(HOME.tgt);
+  fitEmbedCamera();
+  camera.updateProjectionMatrix();
+  controls.update();
+};
 
 // 동 클릭 정보
 const ray = new THREE.Raycaster(), ptr = new THREE.Vector2(); let down = null;
