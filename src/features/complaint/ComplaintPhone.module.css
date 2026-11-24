@@ -19,7 +19,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 690px;
+  height: clamp(570px, calc(100vh - 232px), 690px);
   font-size: 13px;
 }
 

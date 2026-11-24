@@ -7,11 +7,15 @@
 
 .filters {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 2px 2px 6px;
   gap: 6px;
 }
 
 .filter {
+  flex: none;
+  white-space: nowrap;
   font: inherit;
   font-size: 12.5px;
   padding: 5px 10px;
@@ -46,8 +50,14 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  max-height: 420px;
+  max-height: clamp(520px, calc(100vh - 294px), 780px);
   overflow-y: auto;
+}
+
+@media (max-width: 860px) {
+  .list {
+    max-height: 320px;
+  }
 }
 
 .item {

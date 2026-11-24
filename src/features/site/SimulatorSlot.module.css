@@ -27,21 +27,45 @@
   border-radius: var(--radius-sm);
 }
 
-.scenario {
-  margin-top: 20px;
+.views {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
 }
 
-.scenarioTitle {
-  margin: 0 0 8px;
-  font-size: 16px;
+.views button {
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.views button[aria-pressed="true"] {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: white;
+}
+
+.map {
+  min-width: 0;
 }
 
 .scenarioFrame {
   box-sizing: border-box;
   display: block;
   width: 100%;
-  height: clamp(680px, 85vh, 850px);
+  height: clamp(560px, calc(100vh - 256px), 820px);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
   background: var(--plan-ground);
+}
+
+@media (max-width: 480px) {
+  .scenarioFrame {
+    height: 560px;
+  }
 }

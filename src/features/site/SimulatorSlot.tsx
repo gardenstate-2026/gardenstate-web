@@ -6,7 +6,11 @@ import { BUILDINGS, FACILITIES, PATHS, SITE_BOUNDS, TREES } from "./siteData";
 import { CATEGORIES } from "@/features/complaint/constants";
 import styles from "./SimulatorSlot.module.css";
 
+type Viewer = "scenario" | "complaints";
+
 interface SimulatorSlotProps {
+  view: Viewer;
+  onViewChange: (view: Viewer) => void;
   complaints: Complaint[];
   showHeatmap: boolean;
   selectedId: string | null;
@@ -15,20 +19,22 @@ interface SimulatorSlotProps {
 
 const SIMULATOR_URL = import.meta.env.VITE_SIMULATOR_URL as string | undefined;
 const frameUrl = SIMULATOR_URL || `${import.meta.env.BASE_URL}simulator/index.html`;
-const scenarioUrl = `${import.meta.env.BASE_URL}simulator/scenarios.html`;
+const scenarioUrl = `${import.meta.env.BASE_URL}simulator/scenarios.html?embed=1`;
 const site = { buildings: BUILDINGS, facilities: FACILITIES, paths: PATHS, bounds: SITE_BOUNDS, trees: TREES };
 
 /** postMessage로 3D 시뮬레이터에 보내는 메시지 형식 */
 export const SIMULATOR_MESSAGE_TYPE = "gardenstate:complaints";
 
 export function SimulatorSlot({
+  view,
+  onViewChange,
   complaints,
   showHeatmap,
   selectedId,
   onSelect,
 }: SimulatorSlotProps) {
   const frameRef = useRef<HTMLIFrameElement>(null);
-  const [planView, setPlanView] = useState(false);
+  const [planView, setPlanView] = useState(true);
   const [unavailable, setUnavailable] = useState(false);
   const origin = new URL(frameUrl, window.location.href).origin;
 
@@ -66,43 +72,48 @@ export function SimulatorSlot({
 
   return (
     <div>
-      {!planView && !unavailable ? (
-        <div className={styles.slot}>
-          <iframe
-            ref={frameRef}
-            src={frameUrl}
-            title="3D 단지 시뮬레이터"
-            className={styles.frame}
-            onLoad={send}
-            onError={() => setUnavailable(true)}
-          />
-          <button type="button" className={styles.switchView} onClick={() => setPlanView(true)}>2D 배치도</button>
-        </div>
-      ) : (
-        <div className={styles.slot}>
-          <SitePlan
-            complaints={complaints}
-            showHeatmap={showHeatmap}
-            selectedId={selectedId}
-            onSelect={onSelect}
-          />
-          {unavailable ? (
-            <div className={styles.badge} role="status">3D를 표시할 수 없어 2D 배치도를 표시합니다</div>
+      <div className={styles.views} role="group" aria-label="단지 뷰어">
+        <button type="button" aria-pressed={view === "scenario"} onClick={() => onViewChange("scenario")}>
+          3D 설계안 · 8개 동 예시
+        </button>
+        <button type="button" aria-pressed={view === "complaints"} onClick={() => onViewChange("complaints")}>
+          민원 지도 · 4개 동
+        </button>
+      </div>
+      <div hidden={view !== "scenario"}>
+        <iframe className={styles.scenarioFrame} src={scenarioUrl} title="아파트 조경 3D 시뮬레이터" />
+      </div>
+      {view === "complaints" && (
+        <div className={styles.map}>
+          {!planView && !unavailable ? (
+            <div className={styles.slot}>
+              <iframe
+                ref={frameRef}
+                src={frameUrl}
+                title="3D 단지 시뮬레이터"
+                className={styles.frame}
+                onLoad={send}
+                onError={() => setUnavailable(true)}
+              />
+              <button type="button" className={styles.switchView} onClick={() => setPlanView(true)}>2D 배치도</button>
+            </div>
           ) : (
-            <button type="button" className={styles.switchView} onClick={() => setPlanView(false)}>3D 단지 보기</button>
+            <div className={styles.slot}>
+              <SitePlan
+                complaints={complaints}
+                showHeatmap={showHeatmap}
+                selectedId={selectedId}
+                onSelect={onSelect}
+              />
+              {unavailable ? (
+                <div className={styles.badge} role="status">3D를 표시할 수 없어 2D 배치도를 표시합니다</div>
+              ) : (
+                <button type="button" className={styles.switchView} onClick={() => setPlanView(false)}>3D 단지 보기</button>
+              )}
+            </div>
           )}
         </div>
       )}
-      <section className={styles.scenario} aria-labelledby="scenario-title">
-        <h3 id="scenario-title" className={styles.scenarioTitle}>
-          아파트 조경 3D 시뮬레이터
-        </h3>
-        <iframe
-          className={styles.scenarioFrame}
-          src={scenarioUrl}
-          title="8개 동 예시 단지 설계안 비교"
-        />
-      </section>
     </div>
   );
 }
