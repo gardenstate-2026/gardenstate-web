@@ -1,7 +1,9 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { toExport } from "@/features/complaint/useComplaints";
 import type { Complaint } from "@/features/complaint/types";
 import { SitePlan } from "./SitePlan";
+import { BUILDINGS, FACILITIES, PATHS, SITE_BOUNDS, TREES } from "./siteData";
+import { CATEGORIES } from "@/features/complaint/constants";
 import styles from "./SimulatorSlot.module.css";
 
 interface SimulatorSlotProps {
@@ -12,15 +14,12 @@ interface SimulatorSlotProps {
 }
 
 const SIMULATOR_URL = import.meta.env.VITE_SIMULATOR_URL as string | undefined;
+const frameUrl = SIMULATOR_URL || `${import.meta.env.BASE_URL}simulator/index.html`;
+const site = { buildings: BUILDINGS, facilities: FACILITIES, paths: PATHS, bounds: SITE_BOUNDS, trees: TREES };
 
 /** postMessage로 3D 시뮬레이터에 보내는 메시지 형식 */
 export const SIMULATOR_MESSAGE_TYPE = "gardenstate:complaints";
 
-/**
- * 유리님 3D 시뮬레이터가 들어갈 자리.
- * - VITE_SIMULATOR_URL이 있으면 iframe으로 띄우고, 민원이 바뀔 때마다 postMessage로 전달한다.
- * - 없으면 같은 좌표계의 2D 배치도로 미리보기를 보여준다.
- */
 export function SimulatorSlot({
   complaints,
   showHeatmap,
@@ -28,32 +27,54 @@ export function SimulatorSlot({
   onSelect,
 }: SimulatorSlotProps) {
   const frameRef = useRef<HTMLIFrameElement>(null);
+  const [planView, setPlanView] = useState(false);
+  const [unavailable, setUnavailable] = useState(false);
+  const origin = new URL(frameUrl, window.location.href).origin;
 
   const send = useCallback(() => {
-    if (!SIMULATOR_URL) return;
     const target = frameRef.current?.contentWindow;
     if (!target) return;
+    const theme = getComputedStyle(document.documentElement);
+    const colors = Object.fromEntries(CATEGORIES.map((key) => [key, theme.getPropertyValue(`--cat-${key}`).trim()]));
     target.postMessage(
       {
         type: SIMULATOR_MESSAGE_TYPE,
-        payload: { ...toExport(complaints), showHeatmap },
+        payload: {
+          ...toExport(complaints), showHeatmap, selectedId,
+          ...(!SIMULATOR_URL && { layout: site, colors }),
+        },
       },
-      new URL(SIMULATOR_URL, window.location.href).origin,
+      origin,
     );
-  }, [complaints, showHeatmap]);
+  }, [complaints, showHeatmap, selectedId, origin]);
 
   useEffect(send, [send]);
 
-  if (SIMULATOR_URL) {
+  useEffect(() => {
+    function receive(event: MessageEvent) {
+      if (event.origin !== origin || event.source !== frameRef.current?.contentWindow) return;
+      if (event.data?.type === "gardenstate:ready") send();
+      if (event.data?.type === "gardenstate:unavailable") setUnavailable(true);
+      if (event.data?.type === "gardenstate:select" && complaints.some((c) => c.id === event.data.id)) {
+        onSelect(event.data.id);
+      }
+    }
+    window.addEventListener("message", receive);
+    return () => window.removeEventListener("message", receive);
+  }, [complaints, onSelect, origin, send]);
+
+  if (!planView && !unavailable) {
     return (
       <div className={styles.slot}>
         <iframe
           ref={frameRef}
-          src={SIMULATOR_URL}
+          src={frameUrl}
           title="3D 단지 시뮬레이터"
           className={styles.frame}
           onLoad={send}
+          onError={() => setUnavailable(true)}
         />
+        <button type="button" className={styles.switchView} onClick={() => setPlanView(true)}>2D 배치도</button>
       </div>
     );
   }
@@ -66,9 +87,11 @@ export function SimulatorSlot({
         selectedId={selectedId}
         onSelect={onSelect}
       />
-      <div className={styles.badge}>
-        3D 시뮬레이터 연결 전 · 2D 배치도 미리보기
-      </div>
+      {unavailable ? (
+        <div className={styles.badge} role="status">3D를 표시할 수 없어 2D 배치도를 표시합니다</div>
+      ) : (
+        <button type="button" className={styles.switchView} onClick={() => setPlanView(false)}>3D 단지 보기</button>
+      )}
     </div>
   );
 }
