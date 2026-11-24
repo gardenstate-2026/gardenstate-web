@@ -65,17 +65,34 @@ body.night .seg button.on{background:#2a3640;color:#fff}
 .hide{display:none!important}
 #loading{position:fixed;inset:0;display:grid;place-items:center;color:#5e6d66;font-size:14px}
 @media (max-width:820px){
-  #left{width:auto;right:14px;max-height:42vh;padding:12px}
-  #left h1{font-size:15px;margin-bottom:8px}
-  #right{top:auto;bottom:126px;left:14px;right:14px;width:auto}
-  #bar{width:max-content;flex-wrap:wrap;justify-content:center}
-  #bar button{padding:7px 8px;font-size:12px}
-  #bar .sep{display:none}
-  .metrics{grid-template-columns:repeat(5,1fr);gap:4px}
-  .m{padding:6px}.m span{font-size:9.5px}.m b{font-size:14px}
-  #left .desc,#left .eyebrow,#voteBars,#left .note{display:none}
-  .vote{padding:7px;margin-top:6px}
-  #right{max-height:24vh}
+  body:not(.embed) #left{width:auto;right:14px;max-height:42vh;padding:12px}
+  body:not(.embed) #left h1{font-size:15px;margin-bottom:8px}
+  body:not(.embed) #right{top:auto;bottom:126px;left:14px;right:14px;width:auto}
+  body:not(.embed) #bar{width:max-content;flex-wrap:wrap;justify-content:center}
+  body:not(.embed) #bar button{padding:7px 8px;font-size:12px}
+  body:not(.embed) #bar .sep{display:none}
+  body:not(.embed) .metrics{grid-template-columns:repeat(5,1fr);gap:4px}
+  body:not(.embed) .m{padding:6px}body:not(.embed) .m span{font-size:9.5px}body:not(.embed) .m b{font-size:14px}
+  body:not(.embed) #left .desc,body:not(.embed) #left .eyebrow,body:not(.embed) #voteBars,body:not(.embed) #left .note{display:none}
+  body:not(.embed) .vote{padding:7px;margin-top:6px}
+  body:not(.embed) #right{max-height:24vh}
+}
+/* Embed controls stay compact independently of the iframe width. */
+.embed #left{width:min(300px,calc(100% - 20px));top:10px;left:10px;padding:7px;max-height:75vh}
+.embed #left h1,.embed #left .eyebrow{display:none}
+.embed #planSeg{margin:0}
+.embed #planSeg button{padding:5px 4px}
+.embed #planSeg button b{margin:0;font-size:14px}
+.embed #planDetails{margin-top:6px}
+.embed details summary{cursor:pointer;font-size:12px;font-weight:600;padding:6px 8px}
+.embed #layerDetails{top:10px;right:10px;width:min(260px,calc(100% - 20px))}
+.embed #layerDetails:not([open]){width:auto}
+.embed #right{position:static;width:auto;max-height:min(55vh,440px);padding:5px 10px 10px;box-shadow:none;border:0;background:none}
+.embed #bar{width:max-content;max-width:calc(100% - 12px);bottom:6px;flex-wrap:nowrap;overflow-x:auto}
+.embed #bar button{flex:none;padding:7px 8px;font-size:11px}
+.embed #bar .sep{height:16px;margin:0 2px}
+@media (max-width:620px){
+  .embed #layerDetails{top:auto;bottom:52px}
 }
 </style>
 <script type="importmap">
@@ -116,6 +133,30 @@ body.night .seg button.on{background:#2a3640;color:#fff}
 </div>
 <div id="tip"></div>
 
+<script>
+  if (new URLSearchParams(location.search).get("embed") === "1") {
+    document.body.classList.add("embed");
+    const left = document.getElementById("left");
+    const planDetails = document.createElement("details");
+    planDetails.id = "planDetails";
+    const planSummary = document.createElement("summary");
+    planSummary.textContent = "설계안 설명 · 지표 · 투표";
+    planDetails.append(planSummary);
+    const plans = document.getElementById("planSeg");
+    while (plans.nextElementSibling) planDetails.append(plans.nextElementSibling);
+    left.append(planDetails);
+
+    const right = document.getElementById("right");
+    const layerDetails = document.createElement("details");
+    layerDetails.id = "layerDetails";
+    layerDetails.className = "card";
+    const layerSummary = document.createElement("summary");
+    layerSummary.textContent = "레이어 상세";
+    right.before(layerDetails);
+    layerDetails.append(layerSummary, right);
+    right.classList.remove("card");
+  }
+</script>
 <script type="module">
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -187,6 +228,12 @@ const DAY = new THREE.Color(0xd7e6ee), NIGHT = new THREE.Color(0x0b1220);
 scene.background = DAY.clone();
 scene.fog = new THREE.Fog(DAY.clone(), 380, 900);
 const camera = new THREE.PerspectiveCamera(38, innerWidth / innerHeight, 1, 3000);
+const embed = document.body.classList.contains('embed');
+function fitEmbedCamera() {
+  if (embed) camera.zoom = Math.min(1, Math.max(0.48, camera.aspect / 1.2));
+}
+fitEmbedCamera();
+camera.updateProjectionMatrix();
 const HOME = { pos: new THREE.Vector3(170, 195, 290), tgt: new THREE.Vector3(0, 0, 8) };
 if (innerWidth < 820) HOME.pos.multiplyScalar(1.7);
 camera.position.copy(HOME.pos);
@@ -775,7 +822,7 @@ renderer.domElement.addEventListener('pointerup', e => {
   tip.innerHTML = `<b>${b.id}동 ${fl}층</b><br>${b.fl}층 · ${b.hh}세대<br>소음 노출 ${Math.round(b.exp * 100)} (${['양호', '주의', '고노출'][b.lvl]}, ${st.night ? '야간' : '주간'})`;
   Object.assign(tip.style, { display: 'block', left: Math.min(e.clientX + 14, innerWidth - 190) + 'px', top: (e.clientY + 14) + 'px' });
 });
-addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); labelR.setSize(innerWidth, innerHeight); });
+addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; fitEmbedCamera(); camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); labelR.setSize(innerWidth, innerHeight); });
 
 // ======================= 애니메이션 =======================
 applyPlan(true);
