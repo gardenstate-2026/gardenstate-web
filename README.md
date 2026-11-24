@@ -18,7 +18,7 @@
 
 | 3D 단지 배치 | 3D 예시 설계안 · 야간 민원 히트맵 |
 | --- | --- |
-| <img src="docs/images/simulator-site.webp" width="480" alt="아파트 4개 동과 조경 시설을 보여주는 3D 단지 배치"> | <img src="docs/images/simulator-scenario.webp" width="480" alt="8개 동 예시 단지 C안의 야간 민원 히트맵"> |
+| <img src="docs/images/simulator-site.webp" width="480" alt="아파트 동과 중앙 정원, 놀이터의 배치를 내려다본 3D 조감도"> | <img src="docs/images/simulator-scenario.webp" width="480" alt="8개 동 예시 단지 C안의 야간 민원 히트맵"> |
 
 ## 핵심 기능
 

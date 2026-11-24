@@ -15,6 +15,7 @@ interface SimulatorSlotProps {
 
 const SIMULATOR_URL = import.meta.env.VITE_SIMULATOR_URL as string | undefined;
 const frameUrl = SIMULATOR_URL || `${import.meta.env.BASE_URL}simulator/index.html`;
+const scenarioUrl = `${import.meta.env.BASE_URL}simulator/scenarios.html`;
 const site = { buildings: BUILDINGS, facilities: FACILITIES, paths: PATHS, bounds: SITE_BOUNDS, trees: TREES };
 
 /** postMessage로 3D 시뮬레이터에 보내는 메시지 형식 */
@@ -27,6 +28,8 @@ export function SimulatorSlot({
   onSelect,
 }: SimulatorSlotProps) {
   const frameRef = useRef<HTMLIFrameElement>(null);
+  const scenarioDialog = useRef<HTMLDialogElement>(null);
+  const [showScenario, setShowScenario] = useState(false);
   const [planView, setPlanView] = useState(false);
   const [unavailable, setUnavailable] = useState(false);
   const origin = new URL(frameUrl, window.location.href).origin;
@@ -63,34 +66,67 @@ export function SimulatorSlot({
     return () => window.removeEventListener("message", receive);
   }, [complaints, onSelect, origin, send]);
 
-  if (!planView && !unavailable) {
-    return (
-      <div className={styles.slot}>
-        <iframe
-          ref={frameRef}
-          src={frameUrl}
-          title="3D 단지 시뮬레이터"
-          className={styles.frame}
-          onLoad={send}
-          onError={() => setUnavailable(true)}
-        />
-        <button type="button" className={styles.switchView} onClick={() => setPlanView(true)}>2D 배치도</button>
-      </div>
-    );
-  }
-
   return (
-    <div className={styles.slot}>
-      <SitePlan
-        complaints={complaints}
-        showHeatmap={showHeatmap}
-        selectedId={selectedId}
-        onSelect={onSelect}
-      />
-      {unavailable ? (
-        <div className={styles.badge} role="status">3D를 표시할 수 없어 2D 배치도를 표시합니다</div>
+    <div>
+      <button
+        type="button"
+        className={styles.scenarioButton}
+        aria-haspopup="dialog"
+        onClick={() => {
+          scenarioDialog.current?.showModal();
+          setShowScenario(true);
+        }}
+      >
+        아파트 조경 3D 시뮬레이터
+      </button>
+      <dialog
+        ref={scenarioDialog}
+        className={styles.scenarioDialog}
+        aria-labelledby="scenario-title"
+        onClose={() => setShowScenario(false)}
+      >
+        <header className={styles.scenarioHeader}>
+          <strong id="scenario-title">아파트 조경 3D 시뮬레이터</strong>
+          <form method="dialog">
+            <button type="submit" className={styles.scenarioButton}>
+              닫기
+            </button>
+          </form>
+        </header>
+        {showScenario && (
+          <iframe
+            className={styles.scenarioFrame}
+            src={scenarioUrl}
+            title="8개 동 예시 단지 설계안 비교"
+          />
+        )}
+      </dialog>
+      {!planView && !unavailable ? (
+        <div className={styles.slot}>
+          <iframe
+            ref={frameRef}
+            src={frameUrl}
+            title="3D 단지 시뮬레이터"
+            className={styles.frame}
+            onLoad={send}
+            onError={() => setUnavailable(true)}
+          />
+          <button type="button" className={styles.switchView} onClick={() => setPlanView(true)}>2D 배치도</button>
+        </div>
       ) : (
-        <button type="button" className={styles.switchView} onClick={() => setPlanView(false)}>3D 단지 보기</button>
+        <div className={styles.slot}>
+          <SitePlan
+            complaints={complaints}
+            showHeatmap={showHeatmap}
+            selectedId={selectedId}
+            onSelect={onSelect}
+          />
+          {unavailable ? (
+            <div className={styles.badge} role="status">3D를 표시할 수 없어 2D 배치도를 표시합니다</div>
+          ) : (
+            <button type="button" className={styles.switchView} onClick={() => setPlanView(false)}>3D 단지 보기</button>
+      )}
+    </div>
       )}
     </div>
   );
